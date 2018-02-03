@@ -8,13 +8,16 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>React Native Video</Text>
-        <Video
-        source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-        shouldPlay
-        resizeMode="cover"
-        style={{ width, height: 300 }}
-        />
+        <View>
+          <Text style={{ textAlign: 'center' }}>React Native Video</Text>
+          <Video
+          source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+          shouldPlay
+          resizeMode="cover"
+          style={{ width, height: 300 }}
+          />
+          <View style={styles.controlBar}></View>
+        </View>
       </View>
     );
   }
@@ -27,4 +30,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  controlBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 45,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  }
 });
