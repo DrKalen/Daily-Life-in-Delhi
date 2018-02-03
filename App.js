@@ -1,8 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Alert, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Video } from 'expo';
+import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 export default class App extends React.Component {
+  state = {
+    mute: false,
+    shouldPlay: true,
+  }
+
+  handlePlayAndPause = () => { 
+    Alert.alert("The Play/Pause button was pressed!");
+    this.setState((prevState) => ({
+       shouldPlay: !prevState.shouldPlay  
+    }));
+  }
+
+  handleVolume = () => {
+    Alert.alert("The Mute/unMute button was pressed!");
+    this.setState((prevState) => ({
+      mute: !prevState.mute
+    }));
+  }
+  
   render() {
     const { width } = Dimensions.get('window');
 
@@ -16,7 +36,20 @@ export default class App extends React.Component {
           resizeMode="cover"
           style={{ width, height: 300 }}
           />
-          <View style={styles.controlBar}></View>
+          <View style={styles.controlBar}>
+            <MaterialIcons 
+              name={this.state.mute ? "volume-mute" : "volume-up"}
+              size={45} 
+              color="white" 
+              onPress={this.handleVolume} 
+            />
+            <MaterialIcons 
+              name={this.state.shouldPlay ? "pause" : "play-arrow"} 
+              size={45} 
+              color="white" 
+              onPress={this.handlePlayAndPause} 
+            />
+          </View>
         </View>
       </View>
     );
