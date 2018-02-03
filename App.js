@@ -11,6 +11,7 @@ export default class App extends React.Component {
 
   handlePlayAndPause = () => { 
     Alert.alert("The Play/Pause button was pressed!");
+
     this.setState((prevState) => ({
        shouldPlay: !prevState.shouldPlay  
     }));
@@ -18,6 +19,7 @@ export default class App extends React.Component {
 
   handleVolume = () => {
     Alert.alert("The Mute/unMute button was pressed!");
+
     this.setState((prevState) => ({
       mute: !prevState.mute
     }));
@@ -31,7 +33,7 @@ export default class App extends React.Component {
         <View>
           <Text style={{ textAlign: 'center' }}>React Native Video</Text>
           <Video
-          source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+          source={{ uri: 'https://s3.amazonaws.com/drktoolkit/Relationnship+Rescue+Module+1+Death+Spiral/1.+1+What+will+we+learn%3F.mp4' }}
           shouldPlay
           resizeMode="cover"
           style={{ width, height: 300 }}
