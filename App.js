@@ -10,16 +10,12 @@ export default class App extends React.Component {
   }
 
   handlePlayAndPause = () => { 
-    Alert.alert("The Play/Pause button was pressed!");
-
     this.setState((prevState) => ({
        shouldPlay: !prevState.shouldPlay  
     }));
   }
 
   handleVolume = () => {
-    Alert.alert("The Mute/unMute button was pressed!");
-
     this.setState((prevState) => ({
       mute: !prevState.mute
     }));
@@ -34,9 +30,10 @@ export default class App extends React.Component {
           <Text style={{ textAlign: 'center' }}>React Native Video</Text>
           <Video
           source={{ uri: 'https://s3.amazonaws.com/drktoolkit/Relationnship+Rescue+Module+1+Death+Spiral/1.+1+What+will+we+learn%3F.mp4' }}
-          shouldPlay
+          shouldPlay={this.state.shouldPlay}
           resizeMode="cover"
           style={{ width, height: 300 }}
+          isMuted={this.state.mute}
           />
           <View style={styles.controlBar}>
             <MaterialIcons 
