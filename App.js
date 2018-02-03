@@ -13,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Let's add two clickable buttons:</Text>
+        <Text>Which video would you like to watch next?</Text>
         <Button
           onPress={this._onPressButton1}
           title="Video One - In the Morning"
