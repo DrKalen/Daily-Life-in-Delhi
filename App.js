@@ -3,9 +3,10 @@ import { Alert, Button, StyleSheet, Text, View, Dimensions } from 'react-native'
 import { Video } from 'expo';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
+const VIDEOS = ['https://s3.amazonaws.com/bostondelhi/V1.mp4', 'https://s3.amazonaws.com/bostondelhi/V2Rlo-res.mp4', 'https://s3.amazonaws.com/bostondelhi/V3.mp4']
 export default class App extends React.Component {
   state = {
-    uri: 'https://s3.amazonaws.com/bostondelhi/V1.mp4', 
+    currentVideo: 0, 
     mute: false,
     shouldPlay: true,
   }
@@ -31,9 +32,29 @@ export default class App extends React.Component {
   */
 
   _onPressButton1 = () => {
-    this.setState({uri: 'https://s3.amazonaws.com/bostondelhi/V2.mp4'} ) 
+    if (this.state.currentVideo != VIDEOS.length-1) {
+      this.setState({currentVideo: this.state.currentVideo + 1});
+    } else {
+      this.setState({currentVideo: 0});
+    }
   }
- 
+
+  forwardButton = () => {
+    if (!this.state.currentVideo==VIDEOS.length-1) {
+      this.setState({currentVideo: this.state.currentVideo + 1});
+    } else {
+      this.setState({currentVideo: 0});
+    }
+  }
+
+  backButton = () => {
+    if (!this.state.currentVideo == 0) {
+      this.setState({currentVideo: this.state.currentVideo - 1});
+    } else {
+      this.setState({currentVideo: VIDEOS.length-1});
+    }
+  }
+
 
   _onPressButton2 = () => {
     Alert.alert('The user chose video #2!')
@@ -47,7 +68,7 @@ export default class App extends React.Component {
         <View>
           <Text style={{ textAlign: 'center' }}>React Native Video</Text>
           <Video
-          source={{ uri: this.state.uri }}
+          source= {{uri: VIDEOS[this.state.currentVideo]}}
           shouldPlay={this.state.shouldPlay}
           resizeMode="cover"
           style={{ width, height: 300 }}
