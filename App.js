@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Alert, Button, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Video } from 'expo';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
@@ -20,7 +20,15 @@ export default class App extends React.Component {
       mute: !prevState.mute
     }));
   }
-  
+
+  _onPressButton1() {
+    Alert.alert('The user chose video #1!')
+  }
+
+  _onPressButton2() {
+    Alert.alert('The user chose video #2!')
+  }
+
   render() {
     const { width } = Dimensions.get('window');
 
@@ -50,6 +58,15 @@ export default class App extends React.Component {
             />
           </View>
         </View>
+        <Text>Which video would you like to watch next?</Text>
+        <Button
+          onPress={this._onPressButton1}
+          title="Video One - In the Morning"
+          />
+          <Button
+          onPress={this._onPressButton2}
+          title="Video Two - Out with Friends"
+          />
       </View>
     );
   }
