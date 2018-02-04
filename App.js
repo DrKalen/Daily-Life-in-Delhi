@@ -23,14 +23,6 @@ export default class App extends React.Component {
     }));
   }
 
-  /*
-  videoUrl() {
-    return(
-      "Hello World"
-    );
-  }
-  */
-
   _onPressButton1 = () => {
     if (this.state.currentVideo != VIDEOS.length-1) {
       this.setState({currentVideo: this.state.currentVideo + 1});
@@ -48,7 +40,7 @@ export default class App extends React.Component {
   }
 
   backButton = () => {
-    if (!this.state.currentVideo == 0) {
+    if (this.state.currentVideo != 0) {
       this.setState({currentVideo: this.state.currentVideo - 1});
     } else {
       this.setState({currentVideo: VIDEOS.length-1});
@@ -57,7 +49,11 @@ export default class App extends React.Component {
 
 
   _onPressButton2 = () => {
-    Alert.alert('The user chose video #2!')
+    if (this.state.currentVideo != 0) {
+      this.setState({currentVideo: this.state.currentVideo - 1});
+    } else {
+      this.setState({currentVideo: VIDEOS.length-1});
+    }
   }
 
   render() {
@@ -92,11 +88,11 @@ export default class App extends React.Component {
         <Text>Which video would you like to watch next?</Text>
         <Button
           onPress={this._onPressButton1}
-          title="Video One - In the Morning"
+          title="Next Video"
           />
           <Button
           onPress={this._onPressButton2}
-          title="Video Two - Out with Friends"
+          title="Previous Video"
           />
       </View>
     );
