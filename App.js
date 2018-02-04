@@ -23,7 +23,7 @@ export default class App extends React.Component {
     }));
   }
 
-  _onPressButton1 = () => {
+  forwardButton = () => {
     if (this.state.currentVideo != VIDEOS.length-1) {
       this.setState({currentVideo: this.state.currentVideo + 1});
     } else {
@@ -31,24 +31,7 @@ export default class App extends React.Component {
     }
   }
 
-  forwardButton = () => {
-    if (!this.state.currentVideo==VIDEOS.length-1) {
-      this.setState({currentVideo: this.state.currentVideo + 1});
-    } else {
-      this.setState({currentVideo: 0});
-    }
-  }
-
   backButton = () => {
-    if (this.state.currentVideo != 0) {
-      this.setState({currentVideo: this.state.currentVideo - 1});
-    } else {
-      this.setState({currentVideo: VIDEOS.length-1});
-    }
-  }
-
-
-  _onPressButton2 = () => {
     if (this.state.currentVideo != 0) {
       this.setState({currentVideo: this.state.currentVideo - 1});
     } else {
@@ -87,11 +70,11 @@ export default class App extends React.Component {
         </View>
         <Text>Which video would you like to watch next?</Text>
         <Button
-          onPress={this._onPressButton1}
+          onPress={this.forwardButton}
           title="Next Video"
           />
           <Button
-          onPress={this._onPressButton2}
+          onPress={this.backButton}
           title="Previous Video"
           />
       </View>
