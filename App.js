@@ -44,14 +44,14 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View>
+        <View >
           <Text style={{ textAlign: 'center' }}>React Native Video</Text>
           <Video
-          source= {{uri: VIDEOS[this.state.currentVideo]}}
-          shouldPlay={this.state.shouldPlay}
-          resizeMode="cover"
-          style={{ width, height: 300 }}
-          isMuted={this.state.mute}
+            source= {{uri: VIDEOS[this.state.currentVideo]}}
+            shouldPlay={this.state.shouldPlay}
+            resizeMode="cover"
+            style={{ width, height: 300 }}
+            isMuted={this.state.mute}
           />
           <View style={styles.controlBar}>
             <MaterialIcons 
@@ -68,16 +68,24 @@ export default class App extends React.Component {
             />
           </View>
         </View>
-        <Text>Which video would you like to watch next?</Text>
-        <Button
-          onPress={this.forwardButton}
-          title="Next Video"
+
+        <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
+          <MaterialIcons 
+            name={"navigate-before"} 
+            size={45} 
+            color="black" 
+            onPress={this.backButton} 
           />
-          <Button
-          onPress={this.backButton}
-          title="Previous Video"
+          <Text>Next Video</Text>
+          <MaterialIcons 
+            name={"navigate-next"}
+            size={45} 
+            color="black" 
+            onPress={this.forwardButton} 
           />
+        </View>
       </View>
+    
     );
   }
 }
