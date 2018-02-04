@@ -5,6 +5,7 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 export default class App extends React.Component {
   state = {
+    uri: 'https://s3.amazonaws.com/bostondelhi/V1.mp4', 
     mute: false,
     shouldPlay: true,
   }
@@ -21,11 +22,20 @@ export default class App extends React.Component {
     }));
   }
 
-  _onPressButton1() {
-    Alert.alert('The user chose video #1!')
+  /*
+  videoUrl() {
+    return(
+      "Hello World"
+    );
   }
+  */
 
-  _onPressButton2() {
+  _onPressButton1 = () => {
+    this.setState({uri: 'https://s3.amazonaws.com/bostondelhi/V2.mp4'} ) 
+  }
+ 
+
+  _onPressButton2 = () => {
     Alert.alert('The user chose video #2!')
   }
 
@@ -37,7 +47,7 @@ export default class App extends React.Component {
         <View>
           <Text style={{ textAlign: 'center' }}>React Native Video</Text>
           <Video
-          source={{ uri: 'https://s3.amazonaws.com/bostondelhi/V1.mp4' }}
+          source={{ uri: this.state.uri }}
           shouldPlay={this.state.shouldPlay}
           resizeMode="cover"
           style={{ width, height: 300 }}
