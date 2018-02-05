@@ -45,7 +45,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View >
-          <Text style={{ textAlign: 'center' }}>React Native Video</Text>
+          <Text style={{ textAlign: 'center' }}>Daily Life in Delhi</Text>
           <Video
             source= {{uri: VIDEOS[this.state.currentVideo]}}
             shouldPlay={this.state.shouldPlay}
