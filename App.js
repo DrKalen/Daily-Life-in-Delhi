@@ -123,7 +123,7 @@ export default class App extends React.Component {
         </View>
 
         <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
-          <Text>SKIP to next Video</Text>
+          <Text>Press to skip introduction</Text>
           <MaterialIcons 
             name={"fast-forward"}
             size={45} 
@@ -162,18 +162,24 @@ export default class App extends React.Component {
       onSwipe={(direction, state) => this.onSwipe(direction, state)}
       onSwipeUp={(state) => this.onSwipeUp(state)}
       onSwipeDown={(state) => this.onSwipeDown(state)}
-      onSwipeLeft={(state) => this.onSwipeLeft(state)}
+      onSwipeLeft={this.backToStory}
       onSwipeRight={(state) => this.onSwipeRight(state)}
       config={config}
       style={{
         flex: .23,
-        backgroundColor: this.state.backgroundColor
       }}
       >
-      <Text>{this.state.myText}</Text>
-      <Text>onSwipe callback received gesture: {this.state.gestureName}</Text>
-    </GestureRecognizer>
-      </View>
+      <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
+      <MaterialIcons 
+        name={"fast-rewind"}
+        size={45} 
+        color="black" 
+        onPress={this.backToStory} 
+      />
+      <Text>SWIPE to return to story</Text>
+    </View>
+      </GestureRecognizer>
+    </View>
     
     );
   }
