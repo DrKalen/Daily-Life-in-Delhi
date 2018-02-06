@@ -28,11 +28,11 @@ export default class App extends React.Component {
     }));
   }
 
-  forwardButton = () => {
+  rightBranch = () => {
     this.setState({currentVideo: 3});
   }
 
-  backButton = () => {
+  leftBranch = () => {
     this.setState({currentVideo: 2});
   }
 
@@ -71,14 +71,14 @@ export default class App extends React.Component {
             name={"navigate-before"} 
             size={45} 
             color="black" 
-            onPress={this.backButton} 
+            onPress={this.leftBranch} 
           />
-          <Text>Next Video</Text>
+          <Text>Follow Reeta        Follow Shahina</Text>
           <MaterialIcons 
             name={"navigate-next"}
             size={45} 
             color="black" 
-            onPress={this.forwardButton} 
+            onPress={this.rightBranch} 
           />
         </View>
       </View>
