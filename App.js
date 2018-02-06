@@ -3,7 +3,7 @@ import { Alert, Button, StyleSheet, Text, View, Dimensions } from 'react-native'
 import { Video } from 'expo';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
-const VIDEOS = ['https://s3.amazonaws.com/bostondelhi/V1.mp4', 'https://s3.amazonaws.com/bostondelhi/V2Rlo-res.mp4', 'https://s3.amazonaws.com/bostondelhi/V3.mp4']
+const VIDEOS = ['https://s3.amazonaws.com/bostondelhi/onboarding_screen.mp4', 'https://s3.amazonaws.com/bostondelhi/V2_edited.mp4', 'https://s3.amazonaws.com/bostondelhi/V3_edited.mp4', 'https://s3.amazonaws.com/bostondelhi/V4_edited.mp4']
 export default class App extends React.Component {
   state = {
     currentVideo: 0, 
