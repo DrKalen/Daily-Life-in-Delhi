@@ -3,7 +3,12 @@ import { Alert, Button, StyleSheet, Text, View, Dimensions } from 'react-native'
 import { Video } from 'expo';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
-const VIDEOS = ['https://s3.amazonaws.com/bostondelhi/onboarding_screen.mp4', 'https://s3.amazonaws.com/bostondelhi/V2_edited.mp4', 'https://s3.amazonaws.com/bostondelhi/V3_edited.mp4', 'https://s3.amazonaws.com/bostondelhi/V4_edited.mp4']
+const VIDEOS = [
+  'https://s3.amazonaws.com/bostondelhi/onboarding_screen.mp4', 
+  'https://s3.amazonaws.com/bostondelhi/V2_edited.mp4', 
+  'https://s3.amazonaws.com/bostondelhi/V3_edited.mp4', 
+  'https://s3.amazonaws.com/bostondelhi/V4_edited.mp4']
+
 export default class App extends React.Component {
   state = {
     currentVideo: 0, 
@@ -24,19 +29,11 @@ export default class App extends React.Component {
   }
 
   forwardButton = () => {
-    if (this.state.currentVideo != VIDEOS.length-1) {
-      this.setState({currentVideo: this.state.currentVideo + 1});
-    } else {
-      this.setState({currentVideo: 0});
-    }
+    this.setState({currentVideo: 3});
   }
 
   backButton = () => {
-    if (this.state.currentVideo != 0) {
-      this.setState({currentVideo: this.state.currentVideo - 1});
-    } else {
-      this.setState({currentVideo: VIDEOS.length-1});
-    }
+    this.setState({currentVideo: 2});
   }
 
   render() {
