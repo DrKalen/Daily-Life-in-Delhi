@@ -83,17 +83,33 @@ export default class App extends React.Component {
           </View>
         </View>
 
-        <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
-          <Text>Press to skip introduction</Text>
-          <MaterialIcons 
-            name={"fast-forward"}
-            size={45} 
-            color="black" 
-            onPress={this.skipAhead} 
-          />
-        </View>
+        <GestureRecognizer
+          onSwipeRight={this.skipAhead}
+          config={config}
+          style={{
+            flex: .30,
+          }}
+        >
+          <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
+            <Text>Skip introduction</Text>
+            <MaterialIcons 
+              name={"fast-forward"}
+              size={45} 
+              color="black" 
+              onPress={this.skipAhead} 
+            />
+          </View>
+        </GestureRecognizer>
 
-        <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
+        <GestureRecognizer
+        onSwipeLeft={this.leftBranch}
+        onSwipeRight={this.rightBranch}
+        config={config}
+        style={{
+          flex: .10,
+        }}
+      >
+        <View style={{flex: .05, flexDirection: 'row', alignItems: 'center'}}>
           <MaterialIcons 
             name={"navigate-before"} 
             size={45} 
@@ -107,25 +123,25 @@ export default class App extends React.Component {
             color="black" 
             onPress={this.rightBranch} 
           />
-        </View>
+      </View>
+      </GestureRecognizer>
 
       <GestureRecognizer
-      onSwipeLeft={this.backToStory}
-      onSwipeRight={this.skipAhead}
-      config={config}
-      style={{
-        flex: .23,
-      }}
+        onSwipeLeft={this.backToStory}
+        config={config}
+        style={{
+          flex: .05,
+        }}
       >
-      <View style={{flex: .23, flexDirection: 'row', alignItems: 'center'}}>
-      <MaterialIcons 
-        name={"fast-rewind"}
-        size={45} 
-        color="black" 
-        onPress={this.backToStory} 
-      />
-      <Text>SWIPE to return to story</Text>
-    </View>
+        <View style={{flex: .23, flexDirection: 'row', alignItems: 'center'}}>
+          <MaterialIcons 
+            name={"fast-rewind"}
+            size={45} 
+            color="black" 
+            onPress={this.backToStory} 
+          />
+        <Text>Return to story</Text>
+        </View>
       </GestureRecognizer>
     </View>
     
@@ -135,7 +151,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 4,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
