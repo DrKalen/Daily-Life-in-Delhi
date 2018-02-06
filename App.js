@@ -15,50 +15,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myText: 'I\'m ready to get swiped!',
-      gestureName: 'none',
       currentVideo: 0, 
       mute: false,
       shouldPlay: true,
-      backgroundColor: '#fff',
     };
   }
-
-  onSwipeUp(gestureState) {
-    this.setState({myText: 'You swiped up!'});
-  }
- 
-  onSwipeDown(gestureState) {
-    this.setState({myText: 'You swiped down!'});
-  }
-
-  onSwipeLeft(gestureState) {
-    this.setState({myText: 'You swiped left!'});
-  }
- 
-  onSwipeRight(gestureState) {
-    this.setState({myText: 'You swiped right!'});
-  }
-
-  onSwipe(gestureName, gestureState) {
-    const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
-    this.setState({gestureName: gestureName});
-    switch (gestureName) {
-      case SWIPE_UP:
-        this.setState({backgroundColor: 'red'});
-        break;
-      case SWIPE_DOWN:
-        this.setState({backgroundColor: 'green'});
-        break;
-      case SWIPE_LEFT:
-        this.setState({backgroundColor: 'blue'});
-        break;
-      case SWIPE_RIGHT:
-        this.setState({backgroundColor: 'yellow'});
-        break;
-    }
-  }
- 
 
   handlePlayAndPause = () => { 
     this.setState((prevState) => ({
@@ -148,28 +109,15 @@ export default class App extends React.Component {
           />
         </View>
 
-        <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
-        <MaterialIcons 
-          name={"fast-rewind"}
-          size={45} 
-          color="black" 
-          onPress={this.backToStory} 
-        />
-        <Text>SKIP back to story</Text>
-      </View>
-
       <GestureRecognizer
-      onSwipe={(direction, state) => this.onSwipe(direction, state)}
-      onSwipeUp={(state) => this.onSwipeUp(state)}
-      onSwipeDown={(state) => this.onSwipeDown(state)}
       onSwipeLeft={this.backToStory}
-      onSwipeRight={(state) => this.onSwipeRight(state)}
+      onSwipeRight={this.skipAhead}
       config={config}
       style={{
         flex: .23,
       }}
       >
-      <View style={{flex: .25, flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: .23, flexDirection: 'row', alignItems: 'center'}}>
       <MaterialIcons 
         name={"fast-rewind"}
         size={45} 
